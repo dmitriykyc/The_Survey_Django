@@ -16,9 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 import mainapp.views as mainapp
+from django.conf.urls import include
 
 urlpatterns = [
     path('', mainapp.main, name='main'),
-    path('survey/', mainapp.survey, name='survey'),
+    path('survey/', include("mainapp.urls", namespace='survey')),
     path('admin/', admin.site.urls),
 ]
